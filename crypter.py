@@ -28,31 +28,21 @@ while check != 1:
                 if i >= 1:
                     print('Veuillez insérer le token')
                     i+=1
-
 if code_pin != 1000000000000007:
-
     exit()
-
 else:
-
     print('code correct')
-
     time.sleep(0.4)
     cls()
-
 def generate_key():
     return Fernet.generate_key()
-
 def save_key(key, key_path):
     with open(key_path, 'wb') as f:
         f.write(key)
         print('key succesfully wrote')
-
-
 def load_key(key_path):
     with open(key_path, 'rb') as f:
         return f.read()
-
 def encrypt_file(key, file_path):
     f = Fernet(key)
     with open(file_path, 'rb') as file:
@@ -60,41 +50,33 @@ def encrypt_file(key, file_path):
     encrypted_data = f.encrypt(data)
     with open(file_path, 'wb') as file:
         file.write(encrypted_data)
-
 def decrypt_file(key, file_path):
     f = Fernet(key)
     with open(file_path, 'rb') as file:
         encrypted_data = file.read()
     decrypted_data = f.decrypt(encrypted_data)
     return decrypted_data
-
 choice = ""
-
 key_path = "key.key"
 try:
     key = load_key(key_path)
     print('key is : ', key)
 except: 
     pass
-
 try:
     path = sys.argv[2]
 except:
     path = "fsociety.py"
-
 try:
     file_path = path
 except:
     file_path = "fsociety.py"
-
 try: choice = sys.argv[1]
 except: 
     try:
         encrypt_file(key, file_path)
     except:
         print('error ')
-
-
 try:
     if file_path == "":
         file_path = "fsociety.py"
@@ -127,9 +109,7 @@ try:
         print('     default is C:\\fsociety\\fsociety.py')
         print('     exemple : C:/your/file/path.txt')
         print('     exemple : file.txt')
-        time.sleep(5)
 except Exception as e:
     print('make sure ton complte argument like that python decrypter.py <action> <file_path>')
     print('you can use -help to see all parameters')
     print(f'error : {e}')
-        
