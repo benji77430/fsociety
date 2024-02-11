@@ -1,0 +1,9 @@
+fsociety.py
+update.txt
+crypter.py
+keygen.py
+context.py
+miner.py
+publicip.py
+updater.py
+version.txt
