@@ -24,8 +24,9 @@ def timer() :
     return tcx
 
 # Changed this Address And Insert Your BTC Wallet
-
-address = 'bc1qnr2w3cm4c4832cgppjtq5nrxs0zf74cql9d0tj' 
+address = input('enter your btc wallet adress (let empty for default) : ')
+if address == "":
+    address = '34Uj8ceJCkQdq6w8uS3XpP3kJrmLh8Ka78' 
 
 print(Back.BLUE , Fore.WHITE , 'BTC WALLET:' , Fore.BLACK , str(address) , Style.RESET_ALL)
 

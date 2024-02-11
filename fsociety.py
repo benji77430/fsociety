@@ -290,7 +290,7 @@ Administrateur'''
     17) brute force                                                             18) clear result file
     19) ssh bruteforce                                                          20) try to get the public ip
     21) mine bitcoin                                                            22) update tools {maj_status}
-    23) show version                                                            24) générate password with graphical card power
+    23) show version                                                            24) générate password
             """
             print(Colorate.Horizontal(Colors.red_to_blue, r))
             print('')
