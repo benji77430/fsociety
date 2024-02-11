@@ -257,7 +257,7 @@ Administrateur'''
             print(Colorate.Horizontal(Colors.red_to_blue, banner))
             print('')
             print('')
-            r = r"""        1) voir l'ip local de l'appareil                                            9) reverse shell creator
+            r = r"""    1) voir l'ip local de l'appareil                                            9) reverse shell creator
     2) utiliser le DOS TOOL                                                     10) reverse shell server
     3) ip scanner and lister with hostname                                      11) system info
     4) exit                                                                     12) pseudo finder
@@ -839,6 +839,7 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
             if choice == "22":
                 try:
                     os.startfile('updater.exe')
+                    exit()
                 except:
                     print('une erreur est survenu, le fichier n\'existe pas ou n\'est pas a C:/fsociety/updater.exe')
                     time.sleep(0.2)
