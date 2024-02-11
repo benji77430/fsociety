@@ -7,3 +7,5 @@ miner.py
 publicip.py
 updater.py
 version.txt
+passgen.py
+passstarter.py
