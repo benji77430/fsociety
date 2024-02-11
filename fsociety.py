@@ -231,6 +231,30 @@ Administrateur'''
 {+} si vous avez un problème avec le tools mon discord: if u want to know go into the properites of the files 
             """)
         t.sleep(1.5)
+        try:
+            maj_status = ""
+            import requests
+            print('checking update !')
+            with open('version.txt', 'r') as f:
+                version = f.read()
+                print(version)
+                version = int(version)
+                print(version)
+            response = requests.get(f"https://raw.githubusercontent.com/benji77430/fsociety/main/version.txt")
+            
+            try:
+                print('connection established !')
+                target = int(response.text)
+                if target >> version:
+                    maj_status = "(new version available)"
+                    print("new version available")
+                else:
+                    print('version is up to date !')
+            except:
+                print('you are may be offline !')
+        except:
+            pass
+                
         RED   = "\033[1;31m"  
         BLUE  = "\033[1;34m"
         CYAN  = "\033[1;36m"
@@ -257,7 +281,7 @@ Administrateur'''
             print(Colorate.Horizontal(Colors.red_to_blue, banner))
             print('')
             print('')
-            r = r"""    1) voir l'ip local de l'appareil                                            9) reverse shell creator
+            r = f"""    1) voir l'ip local de l'appareil                                            9) reverse shell creator
     2) utiliser le DOS TOOL                                                     10) reverse shell server
     3) ip scanner and lister with hostname                                      11) system info
     4) exit                                                                     12) pseudo finder
@@ -267,7 +291,8 @@ Administrateur'''
     8) dos tool pour adress ip                                                  16) .exe maker
     17) brute force                                                             18) clear result file
     19) ssh bruteforce                                                          20) try to get the public ip
-    21) mine bitcoin                                                            22) update tools
+    21) mine bitcoin                                                            22) update tools {maj_status}
+    23) show version
             """
             print(Colorate.Horizontal(Colors.red_to_blue, r))
             print('')
@@ -843,9 +868,13 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                 except:
                     try:
                         os.startfile('updater.py')
+                        exit()
                     except:
                         print('une erreur est survenu, le fichier n\'existe pas ou n\'est pas a C:/fsociety/updater.exe')
                         time.sleep(0.2)
+            if choice == "23":
+                print(f'the tools version is  {version}')
+                time.sleep(2)
     except Exception as e:
         with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
             now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
