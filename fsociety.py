@@ -241,7 +241,6 @@ Administrateur'''
                 version = int(version)
                 print(version)
             response = requests.get(f"https://raw.githubusercontent.com/benji77430/fsociety/main/version.txt")
-            
             try:
                 print('connection established !')
                 target = int(response.text)
@@ -254,7 +253,6 @@ Administrateur'''
                 print('you are may be offline !')
         except:
             pass
-                
         RED   = "\033[1;31m"  
         BLUE  = "\033[1;34m"
         CYAN  = "\033[1;36m"
@@ -292,7 +290,7 @@ Administrateur'''
     17) brute force                                                             18) clear result file
     19) ssh bruteforce                                                          20) try to get the public ip
     21) mine bitcoin                                                            22) update tools {maj_status}
-    23) show version
+    23) show version                                                            24) générate password with graphical card power
             """
             print(Colorate.Horizontal(Colors.red_to_blue, r))
             print('')
@@ -875,6 +873,8 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
             if choice == "23":
                 print(f'the tools version is  {version}')
                 time.sleep(2)
+            if choice == "24":
+                os.system('python passstarter.py')
     except Exception as e:
         with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
             now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
