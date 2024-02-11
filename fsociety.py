@@ -841,8 +841,11 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     os.startfile('updater.exe')
                     exit()
                 except:
-                    print('une erreur est survenu, le fichier n\'existe pas ou n\'est pas a C:/fsociety/updater.exe')
-                    time.sleep(0.2)
+                    try:
+                        os.startfile('updater.py')
+                    except:
+                        print('une erreur est survenu, le fichier n\'existe pas ou n\'est pas a C:/fsociety/updater.exe')
+                        time.sleep(0.2)
     except Exception as e:
         with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
             now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
