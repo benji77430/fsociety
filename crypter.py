@@ -98,17 +98,7 @@ try:
             new_key = generate_key()
             save_key(new_key, key_path)
     if choice in ("-help", "-h", "--h", "-HELP", "-H", "-?", "", None):
-        print('python decrypter.py [action to do] [file path]')
-        print('action :')
-        print('     -get-key')
-        print('     -decrypt')
-        print('     -crypt')
-        print('     --keygen')
-        print('     -help')
-        print('file path configuration:')
-        print('     default is C:\\fsociety\\fsociety.py')
-        print('     exemple : C:/your/file/path.txt')
-        print('     exemple : file.txt')
+        pass
 except Exception as e:
     print('make sure ton complte argument like that python decrypter.py <action> <file_path>')
     print('you can use -help to see all parameters')
