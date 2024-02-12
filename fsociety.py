@@ -116,46 +116,91 @@ while error<=stop_code:
         t.sleep(0.4)
         cls()
         def user():
-            user = getpass.getuser()
-            file = f"C:\\Users\\{user}\\AppData\\Local\\tools\\users.txt"
-            try:
-                with open(file, "r") as f:
-                    lines = f.readlines()
-                    i = 0
-                    while i < len(lines):
-                        lines[i] = base64.b64decode(lines[i]).decode('utf-8')
-                        # Supprime les caractères de nouvelle ligne à la fin de chaque ligne
-                        lines[i] = lines[i].strip()
-                        if user == lines[i]:
-                            print(f'Utilisateur : {user}')
-                            print(f'Compte autorisé : {lines[i]}')
-                            print('Vous êtes autorisé.')
-                            return True
-                        i += 1
-                    print(f'Utilisateur : {user}')
-                    print('Accès non autorisé.')
-                    return False
-            except FileNotFoundError:
-                print("Le fichier n'a pas été trouvé, veuillez installer l'outil correctement.")
-                while True:
-                    try:
-                        with open(file, "w") as f:
-                            users = users = '''Utilisateur
+            osystem = sys.platform
+            if osystem.startswith('win'):
+                user = getpass.getuser()
+                file = f"C:\\Users\\{user}\\AppData\\Local\\tools\\users.txt"
+                try:
+                    with open(file, "r") as f:
+                        lines = f.readlines()
+                        i = 0
+                        while i < len(lines):
+                            lines[i] = base64.b64decode(lines[i]).decode('utf-8')
+                            # Supprime les caractères de nouvelle ligne à la fin de chaque ligne
+                            lines[i] = lines[i].strip()
+                            if user == lines[i]:
+                                print(f'Utilisateur : {user}')
+                                print(f'Compte autorisé : {lines[i]}')
+                                print('Vous êtes autorisé.')
+                                return True
+                            i += 1
+                        print(f'Utilisateur : {user}')
+                        print('Accès non autorisé.')
+                        return False
+                except FileNotFoundError:
+                    print("Le fichier n'a pas été trouvé, veuillez installer l'outil correctement.")
+                    while True:
+                        try:
+                            with open(file, "w") as f:
+                                users = users = '''Utilisateur
+    benjaminvincent-gasq
+    romainbelorgeot
+    yassinezenadi
+    enzomatos
+    jermeyouf
+    Administrateur'''
+                                users = users.replace('i', '?')
+                                users = users.replace('a', '!')
+                                users = base64.b64encode(users)
+                                f.write(users)
+                                print('fichier correctement creer !')
+                                break
+                        except:
+                            
+                            folder = f"C:\\Users\\{user}\\AppData\\Local\\tools"
+                            os.system(f'mkdir {folder}')
+            else:
+                user = getpass.getuser()
+                file = f"/home\\{user}\\tools\\users.txt"
+                try:
+                    with open(file, "r") as f:
+                        lines = f.readlines()
+                        i = 0
+                        while i < len(lines):
+                            lines[i] = base64.b64decode(lines[i]).decode('utf-8')
+                            # Supprime les caractères de nouvelle ligne à la fin de chaque ligne
+                            lines[i] = lines[i].strip()
+                            if user == lines[i]:
+                                print(f'Utilisateur : {user}')
+                                print(f'Compte autorisé : {lines[i]}')
+                                print('Vous êtes autorisé.')
+                                return True
+                            i += 1
+                        print(f'Utilisateur : {user}')
+                        print('Accès non autorisé.')
+                        return False
+                except FileNotFoundError:
+                    print("Le fichier n'a pas été trouvé, veuillez installer l'outil correctement.")
+                    while True:
+                        try:
+                            with open(file, "w") as f:
+                                users = users = '''Utilisateur
 benjaminvincent-gasq
 romainbelorgeot
 yassinezenadi
 enzomatos
 jermeyouf
 Administrateur'''
-                            users = users.replace('i', '?')
-                            users = users.replace('a', '!')
-                            users = base64.b64encode(users)
-                            f.write(users)
-                            print('fichier correctement creer !')
-                            break
-                    except:
-                        folder = f"C:\\Users\\{user}\\AppData\\Local\\tools"
-                        os.system(f'mkdir {folder}')
+                                users = users.replace('i', '?')
+                                users = users.replace('a', '!')
+                                users = base64.b64encode(users)
+                                f.write(users)
+                                print('fichier correctement creer !')
+                                break
+                        except:
+                            
+                            folder = f"/home/{getpass.getuser()}/tools"
+                            os.system(f'mkdir {folder}')
         if user():
             t.sleep(0.2)
         else:
@@ -195,7 +240,7 @@ Administrateur'''
             code = code.replace(b'r', b'|')
             return code
         try:
-            with open("C:/fsociety/keycode.txt", "r") as f:
+            with open("keycode.txt", "r") as f:
                 keygen = f.read()
                 date_code = keygen
                 print(date_code)
@@ -600,7 +645,16 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                         f.write(starter)
                         print('starter créer avec succès')
                 except Exception as e:
-                    print('error while creating the file : {e}')
+                    try:
+                        with open(f"/home{getpass.getuser()}/desktop/{nom}","w") as f:
+                            f.write(code)
+                            f.close()
+                            print("fichier créer avec succès")
+                        with open(f'/home{getpass.getuser()}/desktop/starter.bat', "w") as f:
+                            f.write(starter)
+                            print('starter créer avec succès')
+                    except Exception as e:
+                        print('error while creating the file : {e}')
             if choice == "10": 
                 port = input('port (1234 par default): ')
                 try: port = int(port) 
@@ -876,8 +930,14 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
             if choice == "24":
                 os.system('python passstarter.py')
     except Exception as e:
-        with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
-            now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
-            err = {"time" : now , "errtype" : str(sys.exc_info()[0]) , e : str(sys.exc_info()[1])}
-            f.write("\n"+str(err))
+        try:
+            with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
+                now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+                err = {"time" : now , "errtype" : str(sys.exc_info()[0]) , e : str(sys.exc_info()[1])}
+                f.write("\n"+str(err))
+        except:
+            with open(f'/home{getpass.getuser()}/desktop/error log.txt', 'a') as f:
+                now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+                err = {"time" : now , "errtype" : str(sys.exc_info()[0]) , e : str(sys.exc_info()[1])}
+                f.write("\n"+str(err))
         error+=1
