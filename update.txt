@@ -1,11 +1,1 @@
-fsociety.py
-update.txt
-crypter.py
-keygen.py
-context.py
-miner.py
-publicip.py
-updater.py
-version.txt
-passgen.py
-passstarter.py
+fsociety.pyupdate.txtcrypter.pykeygen.pycontext.pyminer.pypublicip.pynotif_dos.pyupdater.pyversion.txtpassgen.pypassstarter.py
