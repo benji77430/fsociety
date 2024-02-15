@@ -21,6 +21,7 @@ while error<=stop_code:
             import publicip as Ip
             import datetime
             import time as t
+            import bcrypt
             import random
             import colorama
             import threading
@@ -301,7 +302,43 @@ Administrateur'''
         publicip = Ip.getip.get_publicip()
         print(f'your public ip is : {publicip}')
         t.sleep(0.2)
+        def authenticate_user():
+            # Obtention du nom d'utilisateur actuel
+            current_username = getpass.getuser()
+
+            # Lecture des noms d'utilisateur dans le fichier
+            with open(f'C:/fsociety/username.txt', "r") as f:
+                lines = f.readlines()
+                    # Parcours des noms d'utilisateur dans le fichier
+            for line in lines:
+                line = line.strip()
+                # Vérification si le nom d'utilisateur correspond à celui actuel
+                if bcrypt.checkpw(current_username.encode(), line.encode()):
+                    # Si oui, ouvrir le fichier 'uuid.txt' pour vérification de l'UUID
+                    
+                    with open(f'C:/fsociety/uuid.txt', 'r') as pswd_file:
+                        pswds = pswd_file.readlines()
+                    # Parcourir les UUID stockés dans le fichier 'uuid.txt'
+                    for pswd_line in pswds:
+                        pswd_line = pswd_line.strip()
+                        # Demande à l'utilisateur d'entrer son UUID
+                        entry = input('Veuillez entrer votre UUID : ')
+                        # Vérification de correspondance de l'UUID
+                        if bcrypt.checkpw(entry.encode(), pswd_line.encode()):
+                            print("Connexion réussie !")
+                            return
+                    print("Vous n'avez pas de compte ou l'UUID est incorrect.")
+                    exit()
+    
+            
+            print("Vous n'avez pas de compte.")
+            exit()
+        try:    
+            authenticate_user()
+        except:
+            exit()
         cls()
+
         print("""
 {+} FSOCIETY TOOLS
 {+} si vous avez un problème avec le tools mon discord: if u want to know go into the properites of the files 
@@ -370,7 +407,7 @@ Administrateur'''
             """
             print(Colorate.Horizontal(Colors.red_to_blue, r))
             print('')
-            print('')
+
             choice = input(Colorate.Horizontal(Colors.red_to_purple,'choisissez une action : '))
             if choice == "1":
                 print(Colorate.Horizontal(Colors.red_to_purple,f' l\'ip est {ip}'))
@@ -703,7 +740,7 @@ goto a
                 if port == "": port = 1234
                 print(port)
                 command = f"ncat -nlvp {port}"
-                os.system(command)
+                subprocess.run(["cmd", "/c", "start", "cmd", "/k", command])
             if choice == "11":
                 lip = socket.gethostbyname(socket.gethostname())
                 pla = sys.platform
