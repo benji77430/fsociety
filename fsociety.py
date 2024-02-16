@@ -305,29 +305,35 @@ Administrateur'''
         def authenticate_user():
             # Obtention du nom d'utilisateur actuel
             current_username = getpass.getuser()
+
             # Lecture des noms d'utilisateur dans le fichier
-            with open(f'C:/fsociety/username.txt', "r") as f:
+            with open('C:/fsociety/username.txt', "r") as f:
                 lines = f.readlines()
-                    # Parcours des noms d'utilisateur dans le fichier
-            for line in lines:
+
+            # Parcours des noms d'utilisateur dans le fichier
+            for i, line in enumerate(lines):
                 line = line.strip()
                 # Vérification si le nom d'utilisateur correspond à celui actuel
                 if bcrypt.checkpw(current_username.encode(), line.encode()):
                     # Si oui, ouvrir le fichier 'uuid.txt' pour vérification de l'UUID
-                    with open(f'C:/fsociety/uuid.txt', 'r') as pswd_file:
+                    with open('C:/fsociety/uuid.txt', 'r') as pswd_file:
                         pswds = pswd_file.readlines()
                     # Parcourir les UUID stockés dans le fichier 'uuid.txt'
-                    for pswd_line in pswds:
-                        pswd_line = pswd_line.strip()
+                    entry = input('Veuillez entrer votre UUID : ')
+                    for line in pswds:
+                        pswd_line = line.strip()
                         # Demande à l'utilisateur d'entrer son UUID
-                        entry = input('Veuillez entrer votre UUID : ')
                         # Vérification de correspondance de l'UUID
                         if bcrypt.checkpw(entry.encode(), pswd_line.encode()):
                             print("Connexion réussie !")
                             return
+                        else:
+                            continue
                     print("Vous n'avez pas de compte ou l'UUID est incorrect.")
+                    time.sleep(2)
                     exit()
             print("Vous n'avez pas de compte.")
+            time.sleep(2)
             exit()
         try:    
             authenticate_user()
