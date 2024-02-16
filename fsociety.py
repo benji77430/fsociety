@@ -738,8 +738,12 @@ goto a
                     port=1234
                 if port == "": port = 1234
                 print(port)
+                if input('do you want to start playit addon ? (y/N)') in ('Y', 'y', 'yes', 'YES'):
+                    command = "playit"
+                    subprocess.run(["cmd", "/c", "start", "cmd", "/k", command])
                 command = f"ncat -nlvp {port}"
-                subprocess.run(["cmd", "/c", "start", "cmd", "/k", command])
+                subprocess.run(command, shell=True, text=True)
+
             if choice == "11":
                 lip = socket.gethostbyname(socket.gethostname())
                 pla = sys.platform
@@ -1035,10 +1039,10 @@ goto a
             if choice == "27":
                 print('starting tor auto ip changer')
                 try:
-                    os.startfile('ipchanger/ipchanger.exe')
+                    os.startfile('"C:\\fsociety\\ipchanger\\ipchanger.exe"')
                 except:
                     try:
-                        os.startfile('ipchanger/updater.exe')
+                        os.startfile('"C:\\fsociety\\ipchanger\\updater.exe"')
                     except:
                         print('ipchanger is a tools addon that you need to install manually for the moment')
     except Exception as e:
