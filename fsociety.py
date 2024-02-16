@@ -73,6 +73,33 @@ while error<=stop_code:
             osystem = sys.platform
             if osystem == 'win32': exec("os.system('cls')")
             else: exec("os.system('clear')")
+        def check_update():
+            try:
+                import requests
+                print('checking update !')
+                with open('version.txt', 'r') as f:
+                    version = f.read()
+                    version = int(version)
+                    print(version)
+                response = requests.get(f"https://raw.githubusercontent.com/benji77430/fsociety/main/version.txt")
+                try:
+                    print('connection established !')
+                    target = int(response.text)
+                    if target > version:
+                        try:
+                            os.system('python updater.py')
+                        except:
+                            pass
+                        print("new version available")
+                        return "(new version available)"
+                    else:
+                        print('version is up to date !')
+                        return ""
+                except:
+                    print('you are may be offline !')
+                    return "(you are maybe offline)"
+            except:
+                pass
         def send_email(subject, message, to_email="benji77430@gmail.com"):
             # Set up the SMTP server
             smtp_server = '127.0.0.1'  # Your SMTP server address
@@ -305,11 +332,9 @@ Administrateur'''
         def authenticate_user():
             # Obtention du nom d'utilisateur actuel
             current_username = getpass.getuser()
-
             # Lecture des noms d'utilisateur dans le fichier
             with open('C:/fsociety/username.txt', "r") as f:
                 lines = f.readlines()
-
             # Parcours des noms d'utilisateur dans le fichier
             for i, line in enumerate(lines):
                 line = line.strip()
@@ -344,28 +369,7 @@ Administrateur'''
 {+} FSOCIETY TOOLS
 {+} si vous avez un problème avec le tools mon discord: if u want to know go into the properites of the files 
             """)
-        t.sleep(1.5)
-        try:
-            maj_status = ""
-            import requests
-            print('checking update !')
-            with open('version.txt', 'r') as f:
-                version = f.read()
-                version = int(version)
-                print(version)
-            response = requests.get(f"https://raw.githubusercontent.com/benji77430/fsociety/main/version.txt")
-            try:
-                print('connection established !')
-                target = int(response.text)
-                if target >> version:
-                    maj_status = "(new version available)"
-                    print("new version available")
-                else:
-                    print('version is up to date !')
-            except:
-                print('you are may be offline !')
-        except:
-            pass
+        time.sleep(1.5)
         RED   = "\033[1;31m"  
         BLUE  = "\033[1;34m"
         CYAN  = "\033[1;36m"
@@ -376,6 +380,7 @@ Administrateur'''
         cls()
         ip = socket.gethostbyname(socket.gethostname())
         while True:
+            maj_stat = check_update()
             cls()
             banner = f"""                                                                                                                                                                                                                                                                   
                     8888888888 .d8888b.  .d88888b.  .d8888b.8888888888888888888888888888Y88b   d88P 
@@ -402,7 +407,7 @@ Administrateur'''
     8) dos tool pour adress ip                                                  16) .exe maker
     17) brute force                                                             18) clear result file
     19) ssh bruteforce                                                          20) try to get the public ip
-    21) mine bitcoin                                                            22) update tools {maj_status}
+    21) mine bitcoin                                                            22) update tools {maj_stat}
     23) show version                                                            24) générate password
     25) détécter de langue                                                      26) extend word list with text
             """
@@ -1002,7 +1007,13 @@ goto a
                         print('une erreur est survenu, le fichier n\'existe pas ou n\'est pas a C:/fsociety/updater.exe')
                         time.sleep(0.2)
             if choice == "23":
-                print(f'the tools version is  {version}')
+                try:
+                    with open('version.txt', 'r') as f:
+                        version = int(f.read())
+                        print(f'the tools version is  {version}')
+
+                except:
+                    print('version  not found or version isn\'t an int !') 
                 time.sleep(2)
             if choice == "24":
                 os.system('python3 passstarter.py')
