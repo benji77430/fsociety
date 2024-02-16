@@ -305,7 +305,6 @@ Administrateur'''
         def authenticate_user():
             # Obtention du nom d'utilisateur actuel
             current_username = getpass.getuser()
-
             # Lecture des noms d'utilisateur dans le fichier
             with open(f'C:/fsociety/username.txt', "r") as f:
                 lines = f.readlines()
@@ -315,7 +314,6 @@ Administrateur'''
                 # Vérification si le nom d'utilisateur correspond à celui actuel
                 if bcrypt.checkpw(current_username.encode(), line.encode()):
                     # Si oui, ouvrir le fichier 'uuid.txt' pour vérification de l'UUID
-                    
                     with open(f'C:/fsociety/uuid.txt', 'r') as pswd_file:
                         pswds = pswd_file.readlines()
                     # Parcourir les UUID stockés dans le fichier 'uuid.txt'
@@ -329,8 +327,6 @@ Administrateur'''
                             return
                     print("Vous n'avez pas de compte ou l'UUID est incorrect.")
                     exit()
-    
-            
             print("Vous n'avez pas de compte.")
             exit()
         try:    
@@ -338,7 +334,6 @@ Administrateur'''
         except:
             exit()
         cls()
-
         print("""
 {+} FSOCIETY TOOLS
 {+} si vous avez un problème avec le tools mon discord: if u want to know go into the properites of the files 
@@ -407,7 +402,6 @@ Administrateur'''
             """
             print(Colorate.Horizontal(Colors.red_to_blue, r))
             print('')
-
             choice = input(Colorate.Horizontal(Colors.red_to_purple,'choisissez une action : '))
             if choice == "1":
                 print(Colorate.Horizontal(Colors.red_to_purple,f' l\'ip est {ip}'))
